@@ -33,6 +33,18 @@
 - The program written for this election audit is not nescessarily unique to the recent Colorado congressional election, it can be adapted to audit any election, given that the perameters of the data are formated correctly. 
 - The script used simple for loops in order to run through and retrieve all the relevant data from the .csv file provided by the elections comission, with further uses of conditional statements in order to aggregate the total vote counts by the county (or any applicable region) in which they were cast and by the candidates who received them. 
 - Take for example a national presidental election, which although keeps track of popular vote, is ultimately decided by seats won in the electoral college; this program may be altered to track the number of delegates won up to a threshold of 270 out of the total 538 avaliable seats. 
-  - A for loop may be created that cross references the total number of seats received by each candidate from each state. 
-  - A conditional statement may be created that declares a winner if the electoral seat counts reach a threshold of 270.
+- A for loop may be created that cross references the total number of seats received by each candidate from each state. 
+ ```with open(file_to_load) as election_data:
+    reader = csv.reader(election_data)
+    header = next(reader)
+    for row in reader:
+        total_votes = total_votes + 1
+        candidate_name = row[2]
+        county_name =  row[1]
+        if candidate_name not in candidate_options:
+            candidate_options.append(candidate_name)
+            candidate_votes[candidate_name] = 0
+        candidate_votes[candidate_name] += 1
+  ```
+- A conditional statement may be created that declares a winner if the electoral seat counts reach a threshold of 270.
 
